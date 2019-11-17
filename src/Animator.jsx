@@ -23,7 +23,7 @@ const Animator = ({children, ...props}) => {
 };
 
 Animator.defaultProps = {
-    fillColor: 'red'
+    fillColor: 'black'
 }
 
 export default Animator;
