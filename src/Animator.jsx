@@ -7,8 +7,13 @@ const useStyles = createUseStyles({
     backgroundColor: "#ddd",
     '& path': {
         fill: props.fillColor,
+        'fill-opacity': props.fillOpacity,
         stroke: props.stroke,
         'stroke-width': props.strokeWidth
+    },
+    '& svg': {
+      width: props.width,
+      height: props.height
     }
   })
 })
@@ -27,7 +32,10 @@ const Animator = ({children, ...props}) => {
 Animator.defaultProps = {
     fillColor: 'inherit',
     stroke: 'inherit',
-    strokeWidth: 'inherit'
+    strokeWidth: 'inherit',
+    fillOpacity: 'inherit',
+    width: 'inherit',
+    height: 'inherity'
 }
 
 export default Animator;
