@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Animator>
+      <Animator fill="red" stroke="black" strokeWidth="40px">
         {fire}
       </Animator>
     </div>

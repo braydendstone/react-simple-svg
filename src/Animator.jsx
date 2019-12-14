@@ -3,10 +3,10 @@ import ReactSVG from "react-svg";
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
-  svg: props => ({
+  svg: (props, animation) => ({
     backgroundColor: "#ddd",
     '& path': {
-        fill: props.fillColor,
+        fill: props.fill,
         'fill-opacity': props.fillOpacity,
         stroke: props.stroke,
         'stroke-width': props.strokeWidth
@@ -20,7 +20,23 @@ const useStyles = createUseStyles({
 
 const Animator = ({children, ...props}) => {
 
-  const classes = useStyles(props);
+  const getAnimation = (name) => {
+    switch(name) {
+      case 'fade-in':
+        return {
+          '@keyframes fadein': {
+            from: {opacity: 0},
+            to: {opacity: 1}
+          },
+          '& svg': {
+            animationName: '$fadein'
+          }
+        }
+      default: return null;
+    }
+  }
+
+  const classes = useStyles(props, getAnimation('fade-in'));
 
   return (
     <div className={classes.svg}>
@@ -30,12 +46,13 @@ const Animator = ({children, ...props}) => {
 };
 
 Animator.defaultProps = {
-    fillColor: 'inherit',
+    fill: 'inherit',
     stroke: 'inherit',
     strokeWidth: 'inherit',
     fillOpacity: 'inherit',
     width: 'inherit',
-    height: 'inherity'
+    height: 'inherit',
+    animation: 'none',
 }
 
 export default Animator;
