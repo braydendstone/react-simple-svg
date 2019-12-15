@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Animator fill="red" stroke="rgba(0,0,0,1)" strokeWidth="20px" animation="fade-in" duration="2s">
+      <Animator fill="red" stroke="white" strokeWidth="20px" animation="fade-in-stroke" duration="5s">
         {fire}
       </Animator>
     </div>
