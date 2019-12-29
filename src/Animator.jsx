@@ -24,7 +24,7 @@ const Animator = ({children, ...props}) => {
   console.log(classes);
   return (
     <div className={classes.svg}>
-      <ReactSVG src={children} />
+      <ReactSVG src={props.image || children} />
     </div>
   );
 };
