@@ -1,25 +1,37 @@
 import React from "react";
 import ReactSVG from "react-svg";
-import { createUseStyles } from 'react-jss';
-import './Animator_animations.scss';
+import { createUseStyles } from "react-jss";
+import "./Animator_animations.scss";
 
 const useStyles = createUseStyles({
-  svg: (props) => ({
-      '& path': {
-          fill: props.fill,
-          'fill-opacity': props.fillOpacity,
-          stroke: props.stroke,
-          'stroke-width': props.strokeWidth,
+  svg: props => {
+    let animationString = ''
+    if(props.animationNames) {
+      props.animationNames.map((name, index) => {
+        animationString += `${name} ${props.animationDurations ? `${props.animationDurations[index]},` || '0.5s,' : '0.5s,'}`
+      })
+      animationString = animationString.replace(/(,$)/g, "")
+      console.log(animationString);
+    } else {
+      animationString = `${props.animation} ${props.duration}`
+    }
+    return {
+      "& path": {
+        fill: props.fill,
+        "fill-opacity": props.fillOpacity,
+        stroke: props.stroke,
+        "stroke-width": props.strokeWidth
       },
-      '& svg': {
+      "& svg": {
         width: props.width,
         height: props.height,
-        animation: `${props.animation} ${props.duration}`
-      },
-    })
-}) 
+        animation: animationString
+      }
+    };
+  }
+});
 
-const Animator = ({children, ...props}) => {
+const Animator = ({ children, ...props }) => {
   const classes = useStyles(props);
   console.log(classes);
   return (
@@ -30,14 +42,14 @@ const Animator = ({children, ...props}) => {
 };
 
 Animator.defaultProps = {
-    fill: 'inherit',
-    stroke: 'inherit',
-    strokeWidth: 'inherit',
-    fillOpacity: 'inherit',
-    width: 'inherit',
-    height: 'inherit',
-    animation: 'none',
-    duration: '0.5s'
-}
+  fill: "inherit",
+  stroke: "inherit",
+  strokeWidth: "inherit",
+  fillOpacity: "inherit",
+  width: "inherit",
+  height: "inherit",
+  animation: "none",
+  duration: "0.5s"
+};
 
 export default Animator;

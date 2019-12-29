@@ -12,8 +12,8 @@ function App() {
         fill="red"
         stroke="white"
         strokeWidth="20px"
-        animation="fade-in-stroke"
-        duration="5s"
+        animationNames={['fade-in-fill', 'fade-in-stroke']}
+        animationDurations={['0.5s', '3s']}
       />
     </div>
   );
