@@ -1,7 +1,7 @@
 import React from "react";
 import ReactSVG from "react-svg";
 import { createUseStyles } from "react-jss";
-import "./Animator_animations.scss";
+import "./SimpleSVG_animations.scss";
 
 const useStyles = createUseStyles({
   svg: props => {
@@ -31,7 +31,7 @@ const useStyles = createUseStyles({
   }
 });
 
-const Animator = ({ children, ...props }) => {
+const SimpleSVG = ({ children, ...props }) => {
   const classes = useStyles(props);
   console.log(classes);
   return (
@@ -41,7 +41,7 @@ const Animator = ({ children, ...props }) => {
   );
 };
 
-Animator.defaultProps = {
+SimpleSVG.defaultProps = {
   fill: "inherit",
   stroke: "inherit",
   strokeWidth: "inherit",
@@ -52,4 +52,4 @@ Animator.defaultProps = {
   duration: "0.5s"
 };
 
-export default Animator;
+export default SimpleSVG;
