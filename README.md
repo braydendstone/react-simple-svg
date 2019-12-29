@@ -17,23 +17,31 @@
 ## Guide
 ### Quickstart
 1. Import your SVG image as an object
+
      ```javascript
      import logo from "./logo.svg";
-     ```-
+     ```
+     
 2. Import the SimpleSVG component
+
     ```javascript
     import SimpleSVG from 'react-simple-svg'
     ```
+
 3. Pass the SVG object as the ```image``` prop to the SimpleSVG component
+
     ```xml
     <SimpleSVG image={fire} />
     ```
+
     You may also pass the image as a child to the SimpleSVG component
+
     ```xml
     <SimpleSVG>
         {fire}
     </SimpleSVG>
     ```
+
 ### Basic Properties
 #### Generally, properties will reflex JSS or CSS-in-Javascript syntax
 **Property**|**Description**|**Accepts**|**Default**|**Example**
