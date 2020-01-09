@@ -11,9 +11,16 @@ function App() {
         image={fire}
         fill="red"
         stroke="white"
-        strokeWidth="20px"
-        animationNames={['fade-in-fill', 'fade-in-stroke']}
-        animationDurations={['0.5s', '3s']}
+        strokeWidth="100px"
+        width="500px"
+        animation='spin'
+        duration='2s'
+        iterationCount={3}
+        timingFunction='linear'
+        // animationNames={['spin','fade-in-fill', 'fade-in-stroke']}
+        // animationDurations={['5s','0.5s', '3s']}
+        // animationIterationCounts={['infinite','','']}
+        // animationTimingFunctions={['linear','','']}
       />
     </div>
   );

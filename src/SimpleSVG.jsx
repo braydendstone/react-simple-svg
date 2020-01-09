@@ -5,16 +5,26 @@ import "./SimpleSVG_animations.scss";
 
 const useStyles = createUseStyles({
   svg: props => {
-    let animationString = ''
-    if(props.animationNames) {
+    let animationString = "";
+    if (props.animationNames) {
       props.animationNames.map((name, index) => {
-        animationString += `${name} ${props.animationDurations ? `${props.animationDurations[index]},` || '0.5s,' : '0.5s,'}`
-      })
-      animationString = animationString.replace(/(,$)/g, "")
+        animationString += `${name} ${
+          props.animationDurations
+            ? `${props.animationDurations[index]}` || "0.5s"
+            : "0.5s"
+        } ${props.animationIterationCounts ?
+          `${props.animationIterationCounts[index]}` : '1'} ${
+          props.animationTimingFunctions
+            ? `${props.animationTimingFunctions[index]},` || ","
+            : ","
+        }`;
+      });
+      animationString = animationString.replace(/(,$)/g, "");
       console.log(animationString);
     } else {
-      animationString = `${props.animation} ${props.duration}`
+      animationString = `${props.animation} ${props.duration} ${props.iterationCount} ${props.timingFunction}`;
     }
+    console.log(animationString);
     return {
       "& path": {
         fill: props.fill,
@@ -49,7 +59,9 @@ SimpleSVG.defaultProps = {
   width: "inherit",
   height: "inherit",
   animation: "none",
-  duration: "0.5s"
+  duration: "0.5s",
+  iterationCount: null,
+  timingFunction: null
 };
 
 export default SimpleSVG;
